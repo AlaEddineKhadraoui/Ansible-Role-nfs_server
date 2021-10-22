@@ -1,0 +1,25 @@
+---
+# tasks file for nfs-server
+
+- name: install nfs-server
+  package:
+    name: "{{nfs-package}}"
+    state: present
+
+- name: config exports file
+  template:
+    src: exports.j2
+    dest: /etc/exports
+  notify:
+    - restart nfs service
+    - save modification
+
+- name: allow nfs service on firewalld
+  firewalld:
+     port: "{{nfs_port}}"
+     permanent: yes
+     state: enabled
+  notify: reload firewalld
+    
+
+

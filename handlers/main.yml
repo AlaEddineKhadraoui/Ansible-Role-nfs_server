@@ -1,0 +1,16 @@
+---
+# handlers file for nfs-server
+
+- name: restart nfs service
+  service:
+     name: "{{nfs_service}}"
+     state: restarted
+     enabled: yes
+
+- name: save modification
+  shell: exportfs -r
+
+- name: reload firewalld
+  shell: firewalld-cmd --reload
+     
+  

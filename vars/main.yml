@@ -1,0 +1,9 @@
+---
+# vars file for nfs-server
+
+nfs_package: nfs-utils
+
+nfs_service: nfs-server
+
+nfs_port: 2049/tcp
+

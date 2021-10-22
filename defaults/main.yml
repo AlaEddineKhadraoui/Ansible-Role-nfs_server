@@ -1,0 +1,8 @@
+---
+# defaults file for nfs-server
+
+shared_data: /data
+
+client: 192.168.122.0
+
+options: (rw,no_root_squash)
